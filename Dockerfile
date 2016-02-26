@@ -6,9 +6,4 @@ ADD target/edmp-config-server*.jar app.jar
 
 RUN bash -c 'touch /app.jar'
 
-# ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
-
-COPY run.sh run.sh
-RUN chmod +x run.sh
-
-ENTRYPOINT ["./run.sh"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
