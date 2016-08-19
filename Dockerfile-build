@@ -1,0 +1,7 @@
+FROM maven:3.3.9-jdk-8
+
+MAINTAINER Tobias Flohre <tobias.flohre@codecentric.de>
+
+COPY ./settings.xml /conf/settings.xml 
+
+CMD mvn -s /conf/settings.xml clean versions:set -DnewVersion=${BUILD_NUMBER} -U && mvn -s /conf/settings.xml clean deploy -DaltDeploymentRepository=nexus-release-repository::default::${REPO_URL}/content/repositories/releases/ -U
